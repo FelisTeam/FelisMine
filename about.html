@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FelisMine - О сервере</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- Canvas для частиц фона -->
+    <canvas id="particles"></canvas>
+    <header>
+        <div class="logo">FelisMine</div>
+        <nav>
+            <a href="./index.html">Главная</a>
+            <a href="./about.html">О сервере</a>
+            <a href="#donate">Донат</a>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <h2>О сервере FelisMine</h2>
+        <p>
+            ФелисМайн — это место, где Minecraft превращается в захватывающее приключение. Мы создали сервер для игроков, которые ценят инновации, творчество и дружелюбное сообщество.
+        </p>
+        <h3>Что делает нас особенными?</h3>
+        <ul>
+            <li>Мы каждый день работаем над улучшением нашего сервера.</li>
+            <li>Донаты не дают значительных преимуществ, а лишь слегка упрощают игру в благодарность за вашу поддержку.</li>
+            <li>Мы стараемся учитывать мнение обеих сторон — не только администрации, но и игроков — при добавлении нового контента.</li>
+            <li>Мы стремимся сделать наш сервер уникальным, а вы можете помочь нам в этом!</li>
+            <li>Мы стремимся создать дружелюбное, доброе и креативное сообщество.</li>
+        </ul>
+        <p>
+            Начните своё путешествие на FelisMine! Стройте, исследуйте и станьте частью нашей истории!
+        </p>
+        <button class="join-button" onclick="showModal()">Присоединиться к серверу</button>
+    </section>
+
+    <div id="joinModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <h3>Присоединяйтесь к FelisMine!</h3>
+            <p><strong>IP сервера:</strong> <span id="server-ip">d3.wildex.xyz:25571</span></p>
+            <p><strong>Версия:</strong> 1.20.1+</p>
+            <button class="copy-button" onclick="copyIP()">Копировать IP</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>FelisMine © 2025</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
