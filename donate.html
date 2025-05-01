@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FelisMine - Донат</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- Canvas для частиц фона -->
+    <canvas id="particles"></canvas>
+    <header>
+        <div class="logo">FelisMine</div>
+        <nav>
+            <a href="./index.html">Главная</a>
+            <a href="./about.html">О сервере</a>
+            <a href="./donate.html">Донат</a>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <h2>Поддержите FelisMine!</h2>
+        <p>
+            Ваши донаты помогают нам оплачивать хостинг, добавлять новые механики и проводить ивенты! Донаты не дают сильных преимуществ, а лишь слегка упрощают игру, сохраняя баланс для всех игроков.
+        </p>
+
+        <div class="currency-selector">
+            <label>Выберите валюту:</label>
+            <select id="currency" onchange="updatePrices()">
+                <option value="RUB">RU (₽)</option>
+                <option value="KZT">KZ (₸)</option>
+                <option value="UAH">UA (₴)</option>
+            </select>
+        </div>
+
+        <div class="donate-tiers">
+            <div class="tier">
+                <h3>Spark — <span class="price" data-base-price="29">29 ₽</span></h3>
+                <ul>
+                    <li>/anvil — доступ к наковальне</li>
+                    <li>/ec — доступ к сундуку Эндера</li>
+                    <li>/hat — носи любой предмет как шляпу</li>
+                    <li>3 слота для домов</li>
+                </ul>
+            </div>
+
+            <div class="tier">
+                <h3>Wanderer — <span class="price" data-base-price="49">49 ₽</span></h3>
+                <ul>
+                    <li>Всё из Spark</li>
+                    <li>/beezooka — стреляй пчёлами</li>
+                    <li>/cartographytable — доступ к картографическому столу</li>
+                    <li>/smithingtable — доступ к кузнечному столу</li>
+                    <li>/near — покажет ближайших игроков</li>
+                    <li>4 слота для домов</li>
+                </ul>
+            </div>
+
+            <div class="tier">
+                <h3>Warden — <span class="price" data-base-price="99">99 ₽</span></h3>
+                <ul>
+                    <li>Всё из Spark и Wanderer</li>
+                    <li>/compass — доступ к компасу</li>
+                    <li>/depth — покажет твою глубину</li>
+                    <li>/disposal — мусорка для предметов</li>
+                    <li>/feed — утоли голод</li>
+                    <li>/firework — запуск фейерверков</li>
+                    <li>5 слотов для домов</li>
+                </ul>
+            </div>
+
+            <div class="tier">
+                <h3>Dragonborn — <span class="price" data-base-price="149">149 ₽</span></h3>
+                <ul>
+                    <li>Всё из Spark, Wanderer и Warden</li>
+                    <li>/ext — потуши огонь на себе</li>
+                    <li>/grindstone — доступ к точильному камню</li>
+                    <li>/heal — восстанови здоровье</li>
+                    <li>/kittycannon — стреляй котиками</li>
+                    <li>/repair — почини предмет в руке</li>
+                    <li>/tpa all — запроси телепорт ко всем</li>
+                    <li>/tpahere — телепортируй всех к себе</li>
+                    <li>6 слотов для домов</li>
+                </ul>
+            </div>
+
+            <div class="tier">
+                <h3>Slayer — <span class="price" data-base-price="249">249 ₽</span></h3>
+                <ul>
+                    <li>Всё из Spark, Wanderer, Warden и Dragonborn</li>
+                    <li>/back — вернись на место смерти</li>
+                    <li>/ignore — игнорируй игроков</li>
+                    <li>/invsee — просмотр инвентаря (без редактирования)</li>
+                    <li>/keepxp — сохраняй опыт после смерти</li>
+                    <li>/lightning — вызови молнию</li>
+                    <li>/loom — доступ к ткацкому станку</li>
+                    <li>/ptime — меняй время суток для себя</li>
+                    <li>/pweather — меняй погоду для себя</li>
+                    <li>/stonecutter — доступ к камнерезу</li>
+                    <li>7 слотов для домов</li>
+                    <li>Доступ к становлению Хелпером</li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="join-button" onclick="window.location.href='https://boosty.to/ваш_профиль_boosty'">Поддержать на Boosty</button>
+        <p class="support-text">
+            Возникли вопросы? Пишите в <a href="https://discord.gg/ваш_дискорд_сервер" target="_blank">нашу поддержку в Discord</a>!
+        </p>
+    </section>
+
+    <footer>
+        <p>FelisMine © 2025</p>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script>
+        function updatePrices() {
+            const currency = document.getElementById('currency').value;
+            const prices = document.querySelectorAll('.price');
+            
+            const rates = {
+                RUB: 1,        // 1 рубль
+                KZT: 5,        // 1 рубль = 5 тенге
+                UAH: 0.5       // 1 рубль = 0.5 гривны
+            };
+
+            const symbols = {
+                RUB: '₽',
+                KZT: '₸',
+                UAH: '₴'
+            };
+
+            prices.forEach(priceElement => {
+                const basePrice = parseFloat(priceElement.getAttribute('data-base-price'));
+                const convertedPrice = Math.round(basePrice * rates[currency]);
+                priceElement.textContent = `${convertedPrice} ${symbols[currency]}`;
+            });
+        }
+
+        // Инициализация цен при загрузке страницы
+        window.onload = updatePrices;
+    </script>
+</body>
+</html>
